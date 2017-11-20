@@ -14,48 +14,53 @@ public class GildedRose {
     //Conjured Mana Cake
     public void updateQuality() {
         for (int i = 0; i < getItems().size(); i++) {
-            if (("+5 Dexterity Vest".equals(getItems().get(i).getName())) || "Elixir of the Mongoose".equals(getItems().get(i).getName()) || "Conjured Mana Cake".equals(getItems().get(i).getName())) {
-                if (getItems().get(i).getQuality() > 0) {
-                    getItems().get(i).setQuality(getItems().get(i).getQuality() - 1);
+            Item item = getItems().get(i);
+            if (("+5 Dexterity Vest".equals(item.getName())) || "Elixir of the Mongoose".equals(item.getName()) || "Conjured Mana Cake".equals(item.getName())) {
+                if (item.getQuality() > 0) {
+                    item.setQuality(item.getQuality() - 1);
                 }
             } else {
-                if (getItems().get(i).getQuality() < 50) {
-                    getItems().get(i).setQuality(getItems().get(i).getQuality() + 1);
+                if (item.getQuality() < 50) {
+                    item.setQuality(item.getQuality() + 1);
 
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(getItems().get(i).getName())) {
-                        if (getItems().get(i).getSellIn() < 11) {
-                            if (getItems().get(i).getQuality() < 50) {
-                                getItems().get(i).setQuality(getItems().get(i).getQuality() + 1);
+                    if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
+                        if (item.getSellIn() < 11) {
+                            if (item.getQuality() < 50) {
+                                item.setQuality(item.getQuality() + 1);
                             }
                         }
 
-                        if (getItems().get(i).getSellIn() < 6) {
-                            if (getItems().get(i).getQuality() < 50) {
-                                getItems().get(i).setQuality(getItems().get(i).getQuality() + 1);
+                        if (item.getSellIn() < 6) {
+                            if (item.getQuality() < 50) {
+                                item.setQuality(item.getQuality() + 1);
                             }
                         }
                     }
                 }
             }
+            updateSellIn(item);
 
-            getItems().get(i).setSellIn("Sulfuras, Hand of Ragnaros".equals(getItems().get(i).getName()) ? getItems().get(i).getSellIn() : getItems().get(i).getSellIn() - 1);
 
-            if (getItems().get(i).getSellIn() < 0) {
-                if (("+5 Dexterity Vest".equals(getItems().get(i).getName())) || "Elixir of the Mongoose".equals(getItems().get(i).getName()) || "Conjured Mana Cake".equals(getItems().get(i).getName())) {
-                    if (getItems().get(i).getQuality() > 0) {
-                        getItems().get(i).setQuality(getItems().get(i).getQuality() - 1);
+            if (item.getSellIn() < 0) {
+                if (("+5 Dexterity Vest".equals(item.getName())) || "Elixir of the Mongoose".equals(item.getName()) || "Conjured Mana Cake".equals(item.getName())) {
+                    if (item.getQuality() > 0) {
+                        item.setQuality(item.getQuality() - 1);
                     }
                 }
-                if ("Backstage passes to a TAFKAL80ETC concert".equals(getItems().get(i).getName())) {
-                    getItems().get(i).setQuality(getItems().get(i).getQuality() - getItems().get(i).getQuality());
+                if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
+                    item.setQuality(item.getQuality() - item.getQuality());
                 }
-                if ("Aged Brie".equals(getItems().get(i).getName())) {
-                    if (getItems().get(i).getQuality() < 50) {
-                        getItems().get(i).setQuality(getItems().get(i).getQuality() + 1);
+                if ("Aged Brie".equals(item.getName())) {
+                    if (item.getQuality() < 50) {
+                        item.setQuality(item.getQuality() + 1);
                     }
                 }
             }
         }
+    }
+
+    private void updateSellIn(Item item) {
+        item.setSellIn("Sulfuras, Hand of Ragnaros".equals(item.getName()) ? item.getSellIn() : item.getSellIn() - 1);
     }
 
     public List<Item> getItems() {
