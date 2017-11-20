@@ -23,6 +23,21 @@ public class Item {
 		if (DexterityVestStrategy.TYPE.equals(getName())) {
 			return new DexterityVestStrategy();
 		}
+		if (AgedBrieStrategy.TYPE.equals(getName())) {
+			return new AgedBrieStrategy();
+		}
+		if (ElixirMongooseStrategy.TYPE.equals(getName())) {
+			return new ElixirMongooseStrategy();
+		}
+		if (SulfurasRagnarosStrategy.TYPE.equals(getName())) {
+			return new SulfurasRagnarosStrategy();
+		}
+		if (BackstagPassesStrategy.TYPE.equals(getName())) {
+			return new BackstagPassesStrategy();
+		}
+		if (ConjuredCakeStrategy.TYPE.equals(getName())) {
+			return new ConjuredCakeStrategy();
+		}
 		return null;
 	}
 
