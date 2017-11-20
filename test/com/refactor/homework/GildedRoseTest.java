@@ -18,14 +18,39 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void testUpdateAgedBrieQuality() throws Exception {
+    public void testUpdateDexterityVestQualityShouldNotLessThanZero() throws Exception {
+        GildedRose gildedRose = createTestInstance("+5 Dexterity Vest", 0, 0);
+        gildedRose.updateQuality();
+        Item actualItem = gildedRose.getItems().get(0);
+        Assert.assertEquals(0, actualItem.getQuality());
+        Assert.assertEquals(-1, actualItem.getSellIn());
+    }
 
+    @Test
+    public void testUpdateDexterityVestQualityTwiceWhenSellinLessThanZero() throws Exception {
+        GildedRose gildedRose = createTestInstance("+5 Dexterity Vest", -1, 5);
+        gildedRose.updateQuality();
+        Item actualItem = gildedRose.getItems().get(0);
+        Assert.assertEquals(3, actualItem.getQuality());
+        Assert.assertEquals(-2, actualItem.getSellIn());
+    }
+
+    @Test
+    public void testUpdateAgedBrieQuality() throws Exception {
         GildedRose gildedRose = createTestInstance("Aged Brie", 2, 0);
         gildedRose.updateQuality();
         Item actualItem = gildedRose.getItems().get(0);
         Assert.assertEquals(1, actualItem.getQuality());
         Assert.assertEquals(1, actualItem.getSellIn());
+    }
 
+    @Test
+    public void testUpdateAgedBrieQualityTwiceWhenSellInLessThanZeroAndQualityGreatThan50() throws Exception {
+        GildedRose gildedRose = createTestInstance("Aged Brie", -1, 0);
+        gildedRose.updateQuality();
+        Item actualItem = gildedRose.getItems().get(0);
+        Assert.assertEquals(2, actualItem.getQuality());
+        Assert.assertEquals(-2, actualItem.getSellIn());
     }
 
     @Test
@@ -47,12 +72,39 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void testUpdateBackstagePassesQuality() throws Exception {
-        GildedRose gildedRose = createTestInstance("Backstage passes to a TAFKAL80ETC concert", 15, 20);
+    public void testUpdateBackstagePassesQualityOnceWhenSellInGreatAndEqual11() throws Exception {
+        GildedRose gildedRose = createTestInstance("Backstage passes to a TAFKAL80ETC concert", 11, 20);
         gildedRose.updateQuality();
         Item actualItem = gildedRose.getItems().get(0);
         Assert.assertEquals(21, actualItem.getQuality());
-        Assert.assertEquals(14, actualItem.getSellIn());
+        Assert.assertEquals(10, actualItem.getSellIn());
+    }
+
+    @Test
+    public void testUpdateBackstagePassesQualityTwiceWhenSellInLessThen11AndQuaLessThen50() throws Exception {
+        GildedRose gildedRose = createTestInstance("Backstage passes to a TAFKAL80ETC concert", 6, 20);
+        gildedRose.updateQuality();
+        Item actualItem = gildedRose.getItems().get(0);
+        Assert.assertEquals(22, actualItem.getQuality());
+        Assert.assertEquals(5, actualItem.getSellIn());
+    }
+
+    @Test
+    public void testUpdateBackstagePassesQualityThiceWhenSellInLessThen6AndQuaLessThen50() throws Exception {
+        GildedRose gildedRose = createTestInstance("Backstage passes to a TAFKAL80ETC concert", 5, 20);
+        gildedRose.updateQuality();
+        Item actualItem = gildedRose.getItems().get(0);
+        Assert.assertEquals(23, actualItem.getQuality());
+        Assert.assertEquals(4, actualItem.getSellIn());
+    }
+
+    @Test
+    public void testUpdateBackstagePassesQualityToZeroWhenSellInLessThenZero() throws Exception {
+        GildedRose gildedRose = createTestInstance("Backstage passes to a TAFKAL80ETC concert", 0, 0);
+        gildedRose.updateQuality();
+        Item actualItem = gildedRose.getItems().get(0);
+        Assert.assertEquals(0, actualItem.getQuality());
+        Assert.assertEquals(-1, actualItem.getSellIn());
     }
 
     @Test
