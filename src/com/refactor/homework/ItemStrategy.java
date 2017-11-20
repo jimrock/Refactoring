@@ -11,7 +11,7 @@ public abstract class ItemStrategy {
     }
 
     void updateSellIn(Item item) {
-        item.setSellIn("Sulfuras, Hand of Ragnaros".equals(item.getName()) ? item.getSellIn() : item.getSellIn() - 1);
+        item.setSellIn(item.getSellIn() - 1);
     }
 
     abstract void updateQuality(Item item);
