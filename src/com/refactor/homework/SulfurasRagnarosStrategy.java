@@ -10,6 +10,12 @@ public class SulfurasRagnarosStrategy extends ItemStrategy {
     }
 
     @Override
+    void updateSellIn(Item item) {
+    }
+
+    ;
+
+    @Override
     void updateQualityForNegativeSellIn(Item item) {
     }
 }
