@@ -13,8 +13,17 @@ public class Item {
 		this.setQuality(quality);
 	}
 
+	//+5 Dexterity Vest
+	//Aged Brie
+	//Elixir of the Mongoose
+	//Sulfuras, Hand of Ragnaros
+	//Backstage passes to a TAFKAL80ETC concert
+	//Conjured Mana Cake
 	public ItemStrategy getItemStrategy() {
-		return new ItemStrategy();
+		if (DexterityVestStrategy.TYPE.equals(getName())) {
+			return new DexterityVestStrategy();
+		}
+		return null;
 	}
 
 	/* Generated getter and setter code */
