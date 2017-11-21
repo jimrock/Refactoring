@@ -14,7 +14,7 @@ public class GildedRose {
     }
 
     private ItemStrategy getItemStrategyInstance(Item item) {
-        return item.getItemStrategy();
+        return item.strategyFactory.getItemStrategy(item);
     }
 
     public List<Item> getItems() {

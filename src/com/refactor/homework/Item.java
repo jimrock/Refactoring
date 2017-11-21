@@ -6,6 +6,7 @@ public class Item {
     private int quality;
 
 	ItemStrategy itemStrategy;
+	StrategyFactory strategyFactory = new StrategyFactory();
 
     public Item(String name, int sellIn, int quality) {
 		this.setName(name);
@@ -13,33 +14,6 @@ public class Item {
 		this.setQuality(quality);
 	}
 
-	//+5 Dexterity Vest
-	//Aged Brie
-	//Elixir of the Mongoose
-	//Sulfuras, Hand of Ragnaros
-	//Backstage passes to a TAFKAL80ETC concert
-	//Conjured Mana Cake
-	public ItemStrategy getItemStrategy() {
-		if (DexterityVestStrategy.TYPE.equals(getName())) {
-			return new DexterityVestStrategy();
-		}
-		if (AgedBrieStrategy.TYPE.equals(getName())) {
-			return new AgedBrieStrategy();
-		}
-		if (ElixirMongooseStrategy.TYPE.equals(getName())) {
-			return new ElixirMongooseStrategy();
-		}
-		if (SulfurasRagnarosStrategy.TYPE.equals(getName())) {
-			return new SulfurasRagnarosStrategy();
-		}
-		if (BackstagPassesStrategy.TYPE.equals(getName())) {
-			return new BackstagPassesStrategy();
-		}
-		if (ConjuredCakeStrategy.TYPE.equals(getName())) {
-			return new ConjuredCakeStrategy();
-		}
-		return null;
-	}
 
 	/* Generated getter and setter code */
     public String getName() {
