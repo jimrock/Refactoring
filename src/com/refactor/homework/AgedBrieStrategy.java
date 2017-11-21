@@ -6,11 +6,11 @@ public class AgedBrieStrategy extends ItemStrategy {
 
     @Override
     protected void updateQuality(Item item) {
-        item.setQuality(item.getQuality() < 50 ? item.getQuality() + 1 : item.getQuality());
+        increaseOneQuality(item);
     }
 
     @Override
     protected void updateQualityForNegativeSellIn(Item item) {
-        this.updateQuality(item);
+        increaseOneQuality(item);
     }
 }

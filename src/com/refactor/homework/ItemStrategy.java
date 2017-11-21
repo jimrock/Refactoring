@@ -17,4 +17,13 @@ public abstract class ItemStrategy {
     abstract void updateQuality(Item item);
 
     abstract void updateQualityForNegativeSellIn(Item item);
+
+    protected void decreaseOneQuality(Item item) {
+        item.setQuality(item.getQuality() > 0 ? item.getQuality() - 1 : item.getQuality());
+    }
+
+    protected void increaseOneQuality(Item item) {
+        item.setQuality(item.getQuality() < 50 ? item.getQuality() + 1 : item.getQuality());
+    }
+
 }

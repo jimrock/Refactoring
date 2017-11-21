@@ -6,12 +6,12 @@ public class DexterityVestStrategy extends ItemStrategy {
 
     @Override
     protected void updateQuality(Item item) {
-        item.setQuality(item.getQuality() > 0 ? item.getQuality() - 1 : item.getQuality());
+        decreaseOneQuality(item);
     }
 
     @Override
     protected void updateQualityForNegativeSellIn(Item item) {
-        item.setQuality((item.getSellIn() < 0 && item.getQuality() > 0) ? item.getQuality() - 1 : item.getQuality());
+        decreaseOneQuality(item);
     }
 
 }

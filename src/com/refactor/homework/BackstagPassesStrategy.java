@@ -7,7 +7,7 @@ public class BackstagPassesStrategy extends ItemStrategy {
 
     @Override
     void updateQuality(Item item) {
-        item.setQuality(item.getQuality() < 50 ? item.getQuality() + 1 : item.getQuality());
+        increaseOneQuality(item);
         item.setQuality((item.getSellIn() < 11 && item.getQuality() < 50) ? item.getQuality() + 1 : item.getQuality());
         item.setQuality((item.getSellIn() < 6 && item.getQuality() < 50) ? item.getQuality() + 1 : item.getQuality());
     }
