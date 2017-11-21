@@ -9,12 +9,8 @@ public class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < getItems().size(); i++) {
             Item item = getItems().get(i);
-            getItemStrategyInstance(item).update(item);
+            StrategyFactory.createStrategyInstance(item).update(item);
         }
-    }
-
-    private ItemStrategy getItemStrategyInstance(Item item) {
-        return item.strategyFactory.getItemStrategy(item);
     }
 
     public List<Item> getItems() {

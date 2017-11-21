@@ -7,7 +7,7 @@ public class StrategyFactory {
     //Sulfuras, Hand of Ragnaros
     //Backstage passes to a TAFKAL80ETC concert
     //Conjured Mana Cake
-    public ItemStrategy getItemStrategy(Item item) {
+    public static ItemStrategy createStrategyInstance(Item item) {
         if (DexterityVestStrategy.TYPE.equals(item.getName())) {
             return new DexterityVestStrategy();
         }

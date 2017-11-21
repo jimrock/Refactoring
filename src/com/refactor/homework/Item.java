@@ -5,15 +5,11 @@ public class Item {
     private int sellIn;
     private int quality;
 
-	ItemStrategy itemStrategy;
-	StrategyFactory strategyFactory = new StrategyFactory();
-
     public Item(String name, int sellIn, int quality) {
 		this.setName(name);
 		this.setSellIn(sellIn);
 		this.setQuality(quality);
 	}
-
 
 	/* Generated getter and setter code */
     public String getName() {
